@@ -92,13 +92,13 @@ for h in n_hidden:  # looking or the best parameters w.r.t the number of hidden 
             class_predicted = np.argmax(model.predict(X_test), axis=-1)
             # -->add your Pyhton code here
 
-            # Convert to numpy arrays
-            y_test_np = np.array(y_test)
-            y_pred_np = np.array(class_predicted)
-
             # Calculate accuracy
+            loss, accuracy = model.evaluate(X_test, y_test)
 
-            # print("Highest accuracy so far: " + str(max_acc))
+            if accuracy > max_acc:
+                max_acc = accuracy
+
+            print("Highest accuracy so far: " + str(max_acc))
             print("Parameters: " + "Number of Hidden Layers: " + str(h) +
                   ",number of neurons: " + str(n) + ",learning rate: " + str(l))
             print()
